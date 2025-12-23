@@ -1,0 +1,106 @@
+export const translations = {
+    en: {
+        nav: {
+            about: "About",
+            skills: "Skills",
+            projects: "Projects",
+            contact: "Contact",
+        },
+        hero: {
+            badge: "🚀 Open to work • Junior Full Stack",
+            titleStart: "Building reliable",
+            titleBackend: "Backends",
+            titleMid: "& engaging",
+            titleFrontend: "Frontends",
+            description: "I am a Junior Developer passionate about REST APIs, Microservices, and modern Web Apps. I leverage AI tools to boost productivity and deliver robust solutions faster.",
+            ctaWork: "See my work",
+            ctaContact: "Contact me",
+            backend: "Backend",
+            frontend: "Frontend",
+            devops: "DevOps",
+        },
+        about: {
+            title: "About Me",
+            p1Part1: "I am a",
+            p1Role: "Junior Full Stack Developer",
+            p1Part2: "with a strong foundation in Backend logic. My journey started with building systems like a classic Restaurant QR code menu and Authentication services.",
+            p2Part1: "I believe in using the right tool for the job. While I have experience with",
+            p2Part2: "and",
+            p2Part3: ", I am currently focusing on the modern Stack (Next.js, TypeScript, PostgreSQL) to build scalable apps.",
+            p3: "I leverage AI-assisted workflows to accelerate development, allowing me to focus on architecture and user experience rather than boilerplate.",
+        },
+        skills: {
+            title: "Technical Skills",
+            subtitle: "A mix of traditional backend logic and modern frontend frameworks.",
+            categories: {
+                backend: "Backend & Database",
+                frontend: "Frontend",
+                devops: "DevOps & Tools",
+            },
+        },
+        projects: {
+            title: "Featured Projects",
+            subtitle: "Real-world applications solving actual problems.",
+        },
+        contact: {
+            title: "Ready to collaborate?",
+            description: "I am currently available for freelance projects or full-time opportunities. Let's build something great together.",
+            email: "Send Email",
+            github: "GitHub",
+            instagram: "Instagram",
+        },
+    },
+    fr: {
+        nav: {
+            about: "À propos",
+            skills: "Compétences",
+            projects: "Projets",
+            contact: "Contact",
+        },
+        hero: {
+            badge: "🚀 Disponible • Junior Full Stack",
+            titleStart: "Création de",
+            titleBackend: "Backends",
+            titleMid: "fiables &",
+            titleFrontend: "Frontends",
+            description: "Je suis un développeur Junior passionné par les API REST, les microservices et les applications web modernes. J'utilise l'IA pour booster ma productivité et livrer des solutions robustes plus rapidement.",
+            ctaWork: "Voir mes projets",
+            ctaContact: "Me contacter",
+            backend: "Backend",
+            frontend: "Frontend",
+            devops: "DevOps",
+        },
+        about: {
+            title: "À propos de moi",
+            p1Part1: "Je suis un",
+            p1Role: "Développeur Full Stack Junior",
+            p1Part2: "avec de solides bases en logique Backend. Mon parcours a commencé par la création de systèmes comme un menu QR code pour restaurant et des services d'authentification.",
+            p2Part1: "Je crois en l'utilisation du bon outil pour le travail. Bien que j'aie de l'expérience avec",
+            p2Part2: "et",
+            p2Part3: ", je me concentre actuellement sur la Stack moderne (Next.js, TypeScript, PostgreSQL) pour construire des applications évolutives.",
+            p3: "J'utilise des flux de travail assistés par l'IA pour accélérer le développement, ce qui me permet de me concentrer sur l'architecture et l'expérience utilisateur plutôt que sur le code répétitif.",
+        },
+        skills: {
+            title: "Compétences Techniques",
+            subtitle: "Un mélange de logique backend traditionnelle et de frameworks frontend modernes.",
+            categories: {
+                backend: "Backend & Base de données",
+                frontend: "Frontend",
+                devops: "DevOps & Outils",
+            },
+        },
+        projects: {
+            title: "Projets en Vedette",
+            subtitle: "Des applications concrètes résolvant de vrais problèmes.",
+        },
+        contact: {
+            title: "Prêt à collaborer ?",
+            description: "Je suis actuellement disponible pour des projets freelance ou des opportunités à temps plein. Construisons quelque chose de grand ensemble.",
+            email: "Envoyer un e-mail",
+            github: "GitHub",
+            instagram: "Instagram",
+        },
+    },
+};
+
+export type Language = "en" | "fr";
