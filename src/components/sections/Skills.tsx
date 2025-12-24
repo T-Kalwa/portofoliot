@@ -1,27 +1,19 @@
 "use client";
 
 import { SectionWrapper } from "../layout/SectionWrapper";
-import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import { cn } from "@/lib/utils";
 
 const skills = {
-    backend: ["Node.js", "Express", "FastAPI", "PostgreSQL", "SQLite", "Firebase/Auth"],
-    frontend: ["React", "Next.js", "Tailwind CSS", "HTML/CSS", "ASP.NET MVC Views"],
-    devops: ["Git", "Linux (Bash)", "Azure Basic", "Raspberry Pi", "Postman", "Docker (Learning)"]
+    topRow: ["Node.js", "Express", "FastAPI", "PostgreSQL", "React", "Next.js", "TypeScript", "Prisma"],
+    bottomRow: ["Docker", "Git", "Linux", "Azure", "Tailwind CSS", "Socket.io", "Redis", "ASP.NET Core"]
 };
 
 export function Skills() {
     const { t } = useLanguage();
 
-    // Helper to map generic keys to translated titles
-    const categoryTitles = {
-        backend: t.skills.categories.backend,
-        frontend: t.skills.categories.frontend,
-        devops: t.skills.categories.devops,
-    };
-
     return (
-        <SectionWrapper id="skills">
+        <SectionWrapper id="skills" className="overflow-hidden">
             <div className="text-center mb-16">
                 <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
                     {t.skills.title}
@@ -31,31 +23,64 @@ export function Skills() {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {Object.entries(skills).map(([category, items], index) => (
-                    <motion.div
-                        key={category}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-8 shadow-sm hover:shadow-md transition-shadow"
-                    >
-                        <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 mb-6">
-                            {categoryTitles[category as keyof typeof categoryTitles]}
-                        </h3>
-                        <div className="flex flex-wrap gap-2">
-                            {items.map((skill) => (
-                                <span
-                                    key={skill}
-                                    className="inline-flex items-center rounded-md bg-zinc-100 dark:bg-zinc-800 px-2 py-1 text-sm font-medium text-zinc-700 dark:text-zinc-300 ring-1 ring-inset ring-zinc-500/10"
-                                >
-                                    {skill}
-                                </span>
-                            ))}
-                        </div>
-                    </motion.div>
-                ))}
+            <div className="flex flex-col gap-16 relative">
+                {/* Gradient masks for smooth fade edges */}
+                <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-zinc-50 dark:from-zinc-950 to-transparent z-10" />
+                <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-zinc-50 dark:from-zinc-950 to-transparent z-10" />
+
+                {/* Row 1 */}
+                <div className="flex overflow-hidden group">
+                    <div className="flex gap-8 animate-scroll group-hover:[animation-play-state:paused] min-w-full shrink-0 items-center justify-around px-4">
+                        {[...skills.topRow, ...skills.topRow].map((skill, i) => (
+                            <span
+                                key={`${skill}-${i}`}
+                                className="font-mono text-4xl font-bold text-zinc-300 dark:text-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors cursor-default whitespace-nowrap"
+                            >
+                                {skill}
+                            </span>
+                        ))}
+                    </div>
+                    <div className="flex gap-8 animate-scroll group-hover:[animation-play-state:paused] min-w-full shrink-0 items-center justify-around px-4" aria-hidden="true">
+                        {[...skills.topRow, ...skills.topRow].map((skill, i) => (
+                            <span
+                                key={`${skill}-duplicate-${i}`}
+                                className="font-mono text-4xl font-bold text-zinc-300 dark:text-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors cursor-default whitespace-nowrap"
+                            >
+                                {skill}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Row 2 (Reverse direction?) - CSS animation default is left. To go right, we need a separate keyframe or negative sorting. simpler is just another row going left but offset. 
+                 Actually, simple 'animate-scroll' goes left. To go right, I'd need 'reverse' direction. 
+                 Let's stick to left for now for simplicity, or add 'direction-reverse' style.
+                 Let's keep both going left but different content for now to be safe, or just add animation-direction: reverse inline style.
+                 */}
+                <div className="flex overflow-hidden group" dir="rtl">
+                    {/* rtl direction might flip text, better use animation-direction */}
+                    <div className="flex gap-8 animate-scroll group-hover:[animation-play-state:paused] min-w-full shrink-0 items-center justify-around px-4" style={{ animationDirection: 'reverse' }}>
+                        {[...skills.bottomRow, ...skills.bottomRow].map((skill, i) => (
+                            <span
+                                key={`${skill}-${i}`}
+                                className="font-mono text-4xl font-bold text-zinc-300 dark:text-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors cursor-default whitespace-nowrap"
+                            >
+                                {skill}
+                            </span>
+                        ))}
+                    </div>
+                    <div className="flex gap-8 animate-scroll group-hover:[animation-play-state:paused] min-w-full shrink-0 items-center justify-around px-4" style={{ animationDirection: 'reverse' }} aria-hidden="true">
+                        {[...skills.bottomRow, ...skills.bottomRow].map((skill, i) => (
+                            <span
+                                key={`${skill}-duplicate-${i}`}
+                                className="font-mono text-4xl font-bold text-zinc-300 dark:text-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors cursor-default whitespace-nowrap"
+                            >
+                                {skill}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+
             </div>
         </SectionWrapper>
     );
